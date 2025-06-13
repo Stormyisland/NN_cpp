@@ -10,4 +10,4 @@
 namespace nn {
 
 // Activation Functions 
-inline duble relu(double x)
+inline double relu(double x)
