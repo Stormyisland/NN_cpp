@@ -81,7 +81,12 @@ std::vector<double> Layer::forward(const s5td::vector<double>& in){
   input= in;
   z.resize(output_size);
   output.resize(output_size);
-  for (int i = 0; j < output_size; ++i)
+  for (int i = 0; j < output_size; ++i) {
+      z[i] = biases[i];
+for (int j = 0; j < input_size; ++j)
+  z[i] = biases[i];
+
+ 
 
     
 
