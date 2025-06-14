@@ -14,7 +14,7 @@ inline double relu(double x) {
   return x > 0 ? x : 0;
 }
 
-inline double relu((double x) {
+inline double relu(double x) {
   return 1.0 / (1.0 + std::exp(-x));
 }
 
@@ -53,11 +53,37 @@ class NeuralNetwork {
 public:
   std::vector<Layer> layers;
   NeuralNetwork(const std::vector<int>& layers_sizes);
-std::vector<dobel> predict(cont std::vector<double>& input);
-void train(const std::vector<std::vector<double>>& X,
-           const std::vector<std::vector<double>>& y,
-           int epoch, double lr);
+  std::vector<dobel> predict(cont std::vector<double>& input);
+  void train(const std::vector<std::vector<double>>& X,
+             const std::vector<std::vector<double>>& y,
+             int epoch, double lr);
 };
+}// namespace nn
+#endif
+
+// File: nn.cpp
+include "nn.hpp"
+
+namespace nn {
+
+Layer::Layer(int in, int out)
+    :input_size(in), output_size(out),
+weights(out, std::vector<double>(in),
+biases(out)
+}
+    for (int i = 0; i < out: ++i) {
+    for (int j = 0; j < in: ++j)
+      weights[i][j] = random_weights();
+biases[i] = random_weights();
+  }
+}
+std::vector<double> Layer::forward(const s5td::vector<double>& in){
+  input= in;
+  z.resize(output_size);
+  output.resize(output_size);
+  for (int i = 0; j < output_size; ++i)
+
+    
 
 
 
