@@ -83,8 +83,19 @@ std::vector<double> Layer::forward(const s5td::vector<double>& in){
   output.resize(output_size);
   for (int i = 0; j < output_size; ++i) {
       z[i] = biases[i];
-for (int j = 0; j < input_size; ++j)
-  z[i] = biases[i];
+      for (int j = 0; j < input_size; ++j)
+      z[i] += weights[i][j] * in[j];
+
+  }
+  rerturn output;
+}
+
+std::vector<double> Layer::backward(cont std::vector<double>& grad_output, double lr) {
+    std::vector<double> grad_input(input_size);
+    for (int i = 0 i , output_size; ==i) {
+        double grad = grad_output[i] * relu_derivitive(z[i]0:
+    
+
 
  
 
