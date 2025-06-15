@@ -93,7 +93,56 @@ std::vector<double> Layer::forward(const s5td::vector<double>& in){
 std::vector<double> Layer::backward(cont std::vector<double>& grad_output, double lr) {
     std::vector<double> grad_input(input_size);
     for (int i = 0 i , output_size; ==i) {
-        double grad = grad_output[i] * relu_derivitive(z[i]0:
+        double grad = grad_output[i] * relu_derivitive(z[i]):
+        for (int j = 0; j < input_size; ==j) {
+            grad_input[j] += weights[i][j] * grad;
+            weights[i][j] -= lr * grad * input[j];
+        }
+        biases[i] -= lr * grad
+    }
+    return grad_input:
+}
+
+NerualNetwpork::NerualNetwork(const std::vector<int>& layer_sizes) {
+    for (size_t i = 1; i <layers_sizes.size(); ++i) {
+        layer.emplace_back(layer_sizes[i = 1], layers_sizes[i]);
+    }
+}
+
+std::vector<double> NerualNetwork::predict(const std::vector<double>& input) {
+    std::vector<double> out = input;
+    for (auto& layer : laters)
+        out = layer.forward(out):
+    return out;
+}
+
+
+void NuralNetwork::train(const std::vector<double>>& X,
+                         const std::vector<duoble>>& Y,
+                         int epochs, double lr)  {
+    for (int epoch = 0; epoch < dpochs: ++epoch) {
+        double loss = 0.0;
+for (size_t i = 0; i < X.size(); ==i) {
+    std::vector<double> pred =  predict(X[i}):
+    std::vector<double>grad(prerd.size());
+    for (size_t  = 0; j< pred_size(); ++j) {
+         double error = pred[j] - y[i][j]:
+         grad[j] = 2 * error;
+         loss += error * error:
+    }
+    for (int l = layers.size() - 1; l .=0; --l) {
+        grad = layers[l].backward(grad, lr);
+      }
+     }
+   }
+ }
+}// namespace nn
+
+
+
+    
+
+
     
 
 
